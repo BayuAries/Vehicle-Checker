@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Klasifikasi Kendaraan</title>
+        <link rel="stylesheet" type"text/css" href="Style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            const Url = 'http://127.0.0.1:5000/predict'
+
+            window.addEventListener('load', function() {
+            document.querySelector('input[type="file"]').addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    var img = document.getElementById('imageData');
+                    img.src = URL.createObjectURL(this.files[0]);
+
+                    var data = new FormData()
+                    data.append('file', this.files[0])
+
+                    fetch(Url, {
+                        method: 'POST',
+                        body: data
+                    })
+                    .then(response => response.json())
+                    .then(response => document.getElementById('classText1').innerHTML = response.class_name)
+                    .catch(error => console.log(error))
+                }
+            });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="card">
+            <div class="card-image">
+                <img id="imageData" src="#" alt="your image" height=300>
+            <div>
+            <div class="card-text">
+                <h2> Klasifikasi Kendaraan </h2>
+                <p>Becak | Motor | Mobil</p>
+                <p>Masukan foto untuk mencoba</p>
+                <h2 id="classText1"></h2>
+            <div>
+            <div class="card-input">
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> Upload Foto
+                </label>
+                <input id="file-upload" type="file"/>
+            <div>
+        <div>
+    </body>
+</html>

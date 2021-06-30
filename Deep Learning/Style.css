@@ -1,0 +1,56 @@
+﻿body{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: Url("background.png");
+	overflow: hidden;
+}
+.card {
+	display: grid;
+	grid-template-colomns: 300px;
+	grid-template-rows: 210px 310px 30px ;
+	grid-template-areas: "image" "text" "input";
+
+	font-family : roboto;
+	border-radius: 18px;
+	background: white;
+	box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+	text-align:  center;
+}
+.card-image {
+	grid-area: image;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-top-left-radius: 15px
+	border-top-right-radius: 15px;
+	background-size: cover;
+}
+.card-text {
+	grid-area: text;
+	margin: 15px;
+}
+.card-text h2{
+	margin-top: 0px;
+	font-size: 28px;
+}
+.card-text p{
+	color: gray;
+	font-size: 15px;
+	font-weight: 300;
+}
+.card-input{
+	grid-area: input;
+	margin: 10px;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
